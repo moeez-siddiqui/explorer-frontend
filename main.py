@@ -36,22 +36,34 @@ ENGLISH_FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 TEMP_BASE_DIR = Path("temp_generated_videos")
 TEMP_BASE_DIR.mkdir(parents=True, exist_ok=True)
 
-# --- CORS Configuration ---
+# # --- CORS Configuration ---
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=[
+#         "http://localhost:5173",
+#         "http://127.0.0.1:5173",
+#         "https://deen-daily.netlify.app"
+#
+#         # "https://your-netlify-domain.netlify.app",
+#     ],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+
+# --- Pydantic Model for Request Body ---
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "https://deen-daily.netlify.app"
-
-        # "https://your-netlify-domain.netlify.app",
-    ],
+    allow_origins=["*"], # TEMPORARY: Test with wildcard to see if it works
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"], # Added to ensure all headers are visible
 )
 
-# --- Pydantic Model for Request Body ---
+
 class VerseCardRequest(BaseModel):
     surah_name: str
     verse_number: int
