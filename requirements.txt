@@ -14,7 +14,6 @@ certifi==2025.8.3
 cffi==2.0.0
 chardet==4.0.0
 click==8.2.1
-cloud-init==25.2
 colorama==0.4.6
 command-not-found==0.3
 configobj==5.0.6
